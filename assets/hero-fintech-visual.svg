@@ -1,0 +1,113 @@
+<svg width="520" height="400" viewBox="0 0 520 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Premium fintech systems illustration</title>
+  <desc id="heroDesc">An abstract data systems illustration with layered panels, logic paths, connected nodes, and structured flow geometry representing professional algorithmic trading automation.</desc>
+  <rect width="520" height="400" rx="32" fill="url(#bg)"/>
+  <rect x="1" y="1" width="518" height="398" rx="31" stroke="url(#border)" stroke-opacity="0.55" stroke-width="2"/>
+  <g opacity="0.18">
+    <path d="M48 74H472" stroke="url(#gridH)" stroke-width="1.1"/>
+    <path d="M48 146H472" stroke="url(#gridH)" stroke-width="1.1"/>
+    <path d="M48 218H472" stroke="url(#gridH)" stroke-width="1.1"/>
+    <path d="M48 290H472" stroke="url(#gridH)" stroke-width="1.1"/>
+    <path d="M48 362H472" stroke="url(#gridH)" stroke-width="1.1"/>
+    <path d="M88 42V358" stroke="url(#gridV)" stroke-width="1.1"/>
+    <path d="M172 42V358" stroke="url(#gridV)" stroke-width="1.1"/>
+    <path d="M256 42V358" stroke="url(#gridV)" stroke-width="1.1"/>
+    <path d="M340 42V358" stroke="url(#gridV)" stroke-width="1.1"/>
+    <path d="M424 42V358" stroke="url(#gridV)" stroke-width="1.1"/>
+  </g>
+  <g filter="url(#softBlur)">
+    <circle cx="136" cy="104" r="78" fill="#3B82F6" fill-opacity="0.16"/>
+    <circle cx="389" cy="120" r="92" fill="#22D3EE" fill-opacity="0.14"/>
+    <circle cx="300" cy="286" r="88" fill="#3B82F6" fill-opacity="0.1"/>
+  </g>
+  <rect x="66" y="72" width="176" height="110" rx="24" fill="url(#panelA)" stroke="rgba(255,255,255,0.10)"/>
+  <rect x="280" y="58" width="174" height="124" rx="26" fill="url(#panelB)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="102" y="226" width="314" height="102" rx="28" fill="url(#panelC)" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M116 144L160 118L205 132L249 102L302 126L347 108L401 124" stroke="url(#signal)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M140 257H372" stroke="url(#dataLine)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M140 279H352" stroke="url(#dataLine)" stroke-width="2.2" stroke-linecap="round" opacity="0.82"/>
+  <path d="M140 301H314" stroke="url(#dataLine)" stroke-width="2.2" stroke-linecap="round" opacity="0.62"/>
+  <path d="M160 151C182 188 220 208 266 208C315 208 356 181 375 130" stroke="url(#arc)" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="7 9"/>
+  <path d="M320 86h92" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M320 104h72" stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M320 122h104" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M320 140h60" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="116" cy="144" r="7.5" fill="#22D3EE"/>
+  <circle cx="160" cy="118" r="7.5" fill="#3B82F6"/>
+  <circle cx="205" cy="132" r="7.5" fill="#67E8F9"/>
+  <circle cx="249" cy="102" r="7.5" fill="#3B82F6"/>
+  <circle cx="302" cy="126" r="7.5" fill="#22D3EE"/>
+  <circle cx="347" cy="108" r="7.5" fill="#67E8F9"/>
+  <circle cx="401" cy="124" r="7.5" fill="#3B82F6"/>
+  <g opacity="0.9">
+    <rect x="132" y="244" width="78" height="22" rx="11" fill="url(#pillA)"/>
+    <rect x="222" y="244" width="92" height="22" rx="11" fill="url(#pillB)"/>
+    <rect x="326" y="244" width="58" height="22" rx="11" fill="url(#pillA)"/>
+  </g>
+  <g opacity="0.36">
+    <path d="M90 192C118 170 147 168 173 176" stroke="url(#trace)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M352 196C378 180 403 178 430 184" stroke="url(#trace)" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="36" y1="28" x2="470" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101A32"/>
+      <stop offset="0.55" stop-color="#0B1224"/>
+      <stop offset="1" stop-color="#09101D"/>
+    </linearGradient>
+    <linearGradient id="border" x1="68" y1="36" x2="458" y2="364" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="0.48" stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="gridH" x1="48" y1="74" x2="472" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gridV" x1="88" y1="42" x2="88" y2="358" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="panelA" x1="66" y1="72" x2="242" y2="182" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13203B" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#0B1222" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="panelB" x1="280" y1="58" x2="454" y2="182" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#112642" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#0C1323" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="panelC" x1="102" y1="226" x2="416" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#131F39" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#0A1120" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="116" y1="144" x2="401" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="0.48" stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="dataLine" x1="140" y1="257" x2="372" y2="257" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="arc" x1="160" y1="151" x2="375" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="pillA" x1="132" y1="244" x2="210" y2="266" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="pillB" x1="222" y1="244" x2="314" y2="266" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="trace" x1="90" y1="192" x2="173" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="softBlur" x="10" y="-8" width="478" height="394" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+</svg>

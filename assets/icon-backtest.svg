@@ -1,0 +1,10 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Backtesting icon">
+  <rect width="80" height="80" rx="24" fill="#121A2F"/>
+  <rect x="0.5" y="0.5" width="79" height="79" rx="23.5" stroke="rgba(255,255,255,0.12)"/>
+  <path d="M20 56h40M24 48l10-10 9 6 13-16" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="48" r="3" fill="#22D3EE"/>
+  <circle cx="34" cy="38" r="3" fill="#3B82F6"/>
+  <circle cx="43" cy="44" r="3" fill="#22D3EE"/>
+  <circle cx="56" cy="28" r="3" fill="#67E8F9"/>
+  <defs><linearGradient id="g" x1="24" y1="48" x2="56" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+</svg>

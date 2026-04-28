@@ -1,0 +1,7 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Discipline icon">
+  <rect width="80" height="80" rx="24" fill="#121A2F"/>
+  <rect x="0.5" y="0.5" width="79" height="79" rx="23.5" stroke="rgba(255,255,255,0.12)"/>
+  <path d="M40 20l18 8v13c0 11-7 18-18 21-11-3-18-10-18-21V28l18-8Z" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 40l5 5 11-11" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs><linearGradient id="g" x1="22" y1="20" x2="58" y2="62" gradientUnits="userSpaceOnUse"><stop stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+</svg>
