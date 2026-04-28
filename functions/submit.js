@@ -104,7 +104,7 @@ async function sendInquiryEmail(env, record) {
       from: env.EMAIL_FROM,
       to: [env.DESTINATION_EMAIL],
       reply_to: record.email,
-      subject: `New Website Inquiry: ${record.subject}`,
+      subject: `[XTech Algo] ${record.subject} | Website Inquiry`,
       html: `
         <h2>New Website Inquiry - XTech Algo Trading Solutions</h2>
         <p><strong>Name:</strong> ${escapeHtml(record.name)}</p>
