@@ -1,4 +1,5 @@
 const REQUIRED_FIELDS = ["name", "email", "whatsapp", "subject", "message"];
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -86,6 +87,42 @@ async function saveInquiryToKv(env, key, record) {
   return { ok: true };
 }
 
+async function verifyTurnstile(env, token, request) {
+  if (!env.TURNSTILE_SECRET_KEY) {
+    return { ok: false, reason: "Turnstile secret key is missing." };
+  }
+
+  if (!token) {
+    return { ok: false, reason: "Turnstile verification token is missing." };
+  }
+
+  const ip = request.headers.get("CF-Connecting-IP") || "";
+
+  const formData = new FormData();
+  formData.append("secret", env.TURNSTILE_SECRET_KEY);
+  formData.append("response", token);
+
+  if (ip) {
+    formData.append("remoteip", ip);
+  }
+
+  const response = await fetch(TURNSTILE_VERIFY_URL, {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+
+  if (!result.success) {
+    return {
+      ok: false,
+      reason: "Turnstile verification failed."
+    };
+  }
+
+  return { ok: true };
+}
+
 async function sendInquiryEmail(env, record) {
   if (!env.RESEND_API_KEY || !env.DESTINATION_EMAIL || !env.EMAIL_FROM) {
     return {
@@ -140,6 +177,14 @@ export async function onRequestPost(context) {
   } catch {
     return json({ error: "Unable to parse submitted form data." }, 400);
   }
+  
+const turnstileToken = payload?.["cf-turnstile-response"];
+
+const turnstileResult = await verifyTurnstile(env, turnstileToken, request);
+
+if (!turnstileResult.ok) {
+  return json({ error: turnstileResult.reason }, 400);
+}
 
   const normalizedPayload = normalizePayload(payload);
   const validationError = validatePayload(normalizedPayload);
