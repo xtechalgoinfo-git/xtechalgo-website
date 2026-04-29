@@ -7,6 +7,7 @@ const formStatus = document.getElementById('form-status');
 const yearEl = document.getElementById('year');
 const galleryGrid = document.getElementById('gallery-grid');
 const galleryLoadMore = document.getElementById('gallery-load-more');
+const galleryShowLess = document.getElementById('gallery-show-less');
 const lightbox = document.getElementById('lightbox');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxImage = document.getElementById('lightbox-image');
@@ -14,61 +15,6 @@ const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxCaption = document.getElementById('lightbox-caption');
 const mobileMenuBreakpoint = window.matchMedia('(max-width: 860px)');
 let lastLightboxTrigger = null;
-
-const galleryItems = [
-  {
-    src: 'assets/gallery/placeholder-01.webp',
-    alt: 'Strategy dashboard concept placeholder 01 for XTech Algo Trading Solutions gallery',
-    title: 'Strategy dashboard concept placeholder 01',
-    caption: 'Replace with dashboard imagery, analytics visuals, or company presentation assets.'
-  },
-  {
-    src: 'assets/gallery/placeholder-02.webp',
-    alt: 'System workflow placeholder 02 for XTech Algo Trading Solutions gallery',
-    title: 'System workflow placeholder 02',
-    caption: 'Suitable for logic maps, automation layers, and process-driven architecture visuals.'
-  },
-  {
-    src: 'assets/gallery/placeholder-03.webp',
-    alt: 'Execution environment placeholder 03 for XTech Algo Trading Solutions gallery',
-    title: 'Execution environment placeholder 03',
-    caption: 'Use later for disciplined execution views, platform captures, or company workflow references.'
-  },
-  {
-    src: 'assets/gallery/placeholder-04.webp',
-    alt: 'Data systems placeholder 04 for XTech Algo Trading Solutions gallery',
-    title: 'Data systems placeholder 04',
-    caption: 'Intended for structured data visuals, workflow charts, or technology-led company media.'
-  },
-  {
-    src: 'assets/gallery/placeholder-05.webp',
-    alt: 'Control panel placeholder 05 for XTech Algo Trading Solutions gallery',
-    title: 'Control panel placeholder 05',
-    caption: 'Reserve for risk monitoring panels, control interfaces, or process presentation imagery.'
-  },
-  {
-    src: 'assets/gallery/placeholder-06.webp',
-    alt: 'Automation overview placeholder 06 for XTech Algo Trading Solutions gallery',
-    title: 'Automation overview placeholder 06',
-    caption: 'Ideal for interface overviews, company showcase assets, or logic-driven automation screenshots.'
-  },
-  {
-    src: 'assets/gallery/placeholder-07.webp',
-    alt: 'Structured system preview placeholder 07 for XTech Algo Trading Solutions gallery',
-    title: 'Structured system preview placeholder 07',
-    caption: 'Use later for company process visuals, strategy snapshots, or system presentation imagery.'
-  },
-  {
-    src: 'assets/gallery/placeholder-08.webp',
-    alt: 'Monitoring interface placeholder 08 for XTech Algo Trading Solutions gallery',
-    title: 'Monitoring interface placeholder 08',
-    caption: 'Suitable for monitoring views, reporting layouts, or polished visual presentation assets.'
-  }
-];
-
-const initialGalleryCount = 6;
-const galleryBatchSize = 2;
-let renderedGalleryCount = initialGalleryCount;
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -139,66 +85,68 @@ if (revealItems.length) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
-const createGalleryCard = (item, index) => {
-  const figure = document.createElement('figure');
-  figure.className = 'gallery-card';
-  figure.innerHTML = `
-    <button class="gallery-trigger" type="button" data-gallery-index="${index}" aria-label="Open gallery image: ${item.title}" aria-haspopup="dialog" aria-controls="lightbox">
-      <img src="${item.src}" alt="${item.alt}" width="720" height="520" loading="lazy" decoding="async">
-    </button>
-    <figcaption class="gallery-caption">
-      <strong>${item.title}</strong>
-      <span>${item.caption}</span>
-    </figcaption>
-  `;
-  return figure;
-};
+// ===== Gallery Load More / Show Less =====
+// Shows 3 images first from HTML, then reveals hidden gallery-extra cards in batches of 3.
+// This replaces the old placeholder gallery append logic.
+if (galleryGrid && galleryLoadMore && galleryShowLess) {
+  const galleryExtraItems = Array.from(document.querySelectorAll('.gallery-extra'));
+  const batchSize = 3;
+  let visibleExtraCount = 0;
 
-const syncGalleryButton = () => {
-  if (!galleryLoadMore) {
-    return;
-  }
+  const updateGalleryButtons = () => {
+    galleryLoadMore.hidden = visibleExtraCount >= galleryExtraItems.length;
+    galleryShowLess.hidden = visibleExtraCount <= 0;
+  };
 
-  if (renderedGalleryCount >= galleryItems.length) {
-    galleryLoadMore.hidden = true;
-    return;
-  }
-
-  galleryLoadMore.hidden = false;
-};
-
-if (galleryGrid) {
-  syncGalleryButton();
-
-  galleryLoadMore?.addEventListener('click', () => {
+  galleryLoadMore.addEventListener('click', () => {
     galleryLoadMore.blur();
-    const nextCount = Math.min(renderedGalleryCount + galleryBatchSize, galleryItems.length);
 
-    for (let index = renderedGalleryCount; index < nextCount; index += 1) {
-      galleryGrid.appendChild(createGalleryCard(galleryItems[index], index));
+    const nextCount = Math.min(visibleExtraCount + batchSize, galleryExtraItems.length);
+
+    for (let i = visibleExtraCount; i < nextCount; i += 1) {
+      galleryExtraItems[i].hidden = false;
     }
 
-    renderedGalleryCount = nextCount;
-    syncGalleryButton();
+    visibleExtraCount = nextCount;
+    updateGalleryButtons();
   });
+
+  galleryShowLess.addEventListener('click', () => {
+    galleryShowLess.blur();
+
+    const nextCount = Math.max(visibleExtraCount - batchSize, 0);
+
+    for (let i = visibleExtraCount - 1; i >= nextCount; i -= 1) {
+      galleryExtraItems[i].hidden = true;
+    }
+
+    visibleExtraCount = nextCount;
+    updateGalleryButtons();
+  });
+
+  updateGalleryButtons();
 
   galleryGrid.addEventListener('click', (event) => {
     const trigger = event.target instanceof Element ? event.target.closest('.gallery-trigger') : null;
-    if (!trigger) {
+
+    if (!trigger || !lightbox || !lightboxImage || !lightboxTitle || !lightboxCaption) {
       return;
     }
 
-    const index = Number(trigger.getAttribute('data-gallery-index'));
-    const item = galleryItems[index];
-    if (!item || !lightbox || !lightboxImage || !lightboxTitle || !lightboxCaption) {
+    const image = trigger.querySelector('img');
+    const card = trigger.closest('.gallery-card');
+    const title = card?.querySelector('.gallery-caption strong')?.textContent || image?.alt || '';
+    const caption = card?.querySelector('.gallery-caption span')?.textContent || '';
+
+    if (!image) {
       return;
     }
 
     lastLightboxTrigger = trigger;
-    lightboxImage.src = item.src;
-    lightboxImage.alt = item.alt;
-    lightboxTitle.textContent = item.title;
-    lightboxCaption.textContent = item.caption;
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt || title;
+    lightboxTitle.textContent = title;
+    lightboxCaption.textContent = caption;
 
     if (typeof lightbox.showModal === 'function') {
       lightbox.showModal();
@@ -227,6 +175,7 @@ if (lightbox) {
   };
 
   lightboxClose?.addEventListener('click', closeLightbox);
+
   lightbox.addEventListener('cancel', (event) => {
     event.preventDefault();
     closeLightbox();
@@ -235,6 +184,7 @@ if (lightbox) {
   lightbox.addEventListener('click', (event) => {
     const rect = lightbox.getBoundingClientRect();
     const isOutside = event.clientY < rect.top || event.clientY > rect.bottom || event.clientX < rect.left || event.clientX > rect.right;
+
     if (isOutside) {
       closeLightbox();
     }

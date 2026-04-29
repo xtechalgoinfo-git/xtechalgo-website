@@ -1645,3 +1645,28 @@ button {
     transform: none;
   }
 }
+.hidden {
+  display: none;
+}
+
+.gallery-control-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.gallery-card[hidden] {
+  display: none !important;
+}
+
+.benefit-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.benefit-head h3 {
+  margin: 0;
+}
