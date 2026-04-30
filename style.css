@@ -1020,12 +1020,22 @@ button {
   gap: 18px;
 }
 
-.lightbox-body img {
+/*.lightbox-body img {
   width: 100%;
   max-height: 72vh;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 18px 50px rgba(2, 8, 23, 0.35);
+}*/
+
+.lightbox-body img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 20px;
+  margin: 0 auto;
 }
 
 .lightbox-copy {
